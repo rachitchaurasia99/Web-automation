@@ -1,3 +1,4 @@
+# Exercise : Write a test script using selenium webdriver
 require 'selenium-webdriver'
 require 'faraday'
 class Browserstack
