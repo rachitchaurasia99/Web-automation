@@ -14,7 +14,8 @@ driver = Selenium::WebDriver.for :chrome
 url = 'https://www.google.com'
 navigate(driver, url)
 search_box = get_element(driver, :name, 'q')
-command(search_box,'Noida')
+command(search_box,'dijkstras algorithm')
 search_box.submit
-get_element(driver,:partial_link_text, 'Wikipedia').click
+get_element(driver,:partial_link_text, 'geeksforgeeks').click
+driver.action.move_to(get_element(driver,:id,'tablist1-tab1')).perform
 sleep 20
