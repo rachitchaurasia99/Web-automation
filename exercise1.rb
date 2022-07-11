@@ -2,12 +2,15 @@
 require 'selenium-webdriver'
 require 'faraday'
 class Browserstack
-  def navigate(driver, url)
-    driver.navigate.to url
+  def initialize(driver)
+    @driver = driver
+  end
+  def navigate(url)
+    @driver.navigate.to url
   end
 
-  def get_element(driver, type, value)
-    driver.find_element(type,value)
+  def get_element(type, value)
+    @driver.find_element(type,value)
   end
 
   def command(element, message)
@@ -19,11 +22,10 @@ class Browserstack
   end
 
   def login(user_email, user_password)
-    driver = Selenium::WebDriver.for :chrome
-    navigate(driver, 'https://www.browserstack.com/users/sign_in')
-    username = get_element(driver, :id, 'user_email_login')
-    password = get_element(driver, :id, 'user_password')
-    login = get_element(driver, :name, 'commit')
+    navigate('https://www.browserstack.com/users/sign_in')
+    username = get_element(:id, 'user_email_login')
+    password = get_element(:id, 'user_password')
+    login = get_element(:name, 'commit')
 
     command(username, user_email)
     command(password, user_password)
@@ -35,4 +37,4 @@ class Browserstack
  
 end
 
-Browserstack.new.login('19102025@mail.jiit.ac.in', 'mypassword@123')
+Browserstack.new(Selenium::WebDriver.for :chrome).login('19102025@mail.jiit.ac.in', 'mypassword@123')
