@@ -1,7 +1,7 @@
 Feature: Google search
   Scenario: Doing a google search for Dijkstra's Algorithm
     Given We are on google home page
-    When We are type in search bar
+    When We type in search bar
     And hit enter
     Then We should have search results
   Scenario: Selecting link with keyword Geeksforgeeks
