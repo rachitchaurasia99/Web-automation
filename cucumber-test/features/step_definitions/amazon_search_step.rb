@@ -10,8 +10,8 @@ When(/^a user search for "([^"]*)"$/) do |keyword|
   @amazon_page.click_search_button
 end
  
-Then(/^amazon should return result for "([^"]*)"$/) do |arg|
-  expect(@amazon_page.search_results_present?(arg)).to eql(true)
+Then(/^amazon should click on "([^"]*)"$/) do |arg|
+  @amazon_page.click_link(arg)
   sleep 20
   @amazon_page.close
 end

@@ -5,8 +5,12 @@ class SearchPage
     button(:search, value: "Go")
     div(:search_results, id: "search")
    
+    def click_link(keyword)
+      @browser.find_element(:partial_link_text, keyword.to_s).click
+    end
+
     def visit_amazon_site
-      @browser.goto 'http://www.amazon.in'
+      @browser.navigate.to 'https://www.amazon.in'
     end
    
     def enter_search_keyword(search_key)
