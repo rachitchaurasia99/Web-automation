@@ -1,21 +1,19 @@
 require 'selenium-webdriver'
-include DataMagic
+
 Given /^I have read the yaml file from features\/yaml$/ do
-  @driver = Selenium::WebDriver.for :chrome
-  DataMagic.yml_directory = 'features/yaml'
-  DataMagic.load "example.yml"
+ @google_form = Form.new(@browser)
 end
 
-Given /^We are on google homepage$/ do
-  @driver.navigate.to 'https://www.google.com' 
-  sleep 10
+Given /^We are on google form$/ do
+   @google_form.visit
+  sleep 2
 end
-Then("search for {string}") do |search_keyword|
-  queries = data_for "example/#{search_keyword}"
-  search = @driver.find_element(:name => 'q')
-  search.send_key(queries['search'])
+Then("populate the page with data of {string}") do |user|
+  @google_form.populate(user)
+  sleep 3
+end
+Then("submit") do 
+  @google_form.submit
   sleep 2
-  search.submit
-  sleep 2
-  # @driver.quit
+  @google_form.close
 end

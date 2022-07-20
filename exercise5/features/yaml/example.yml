@@ -1,5 +1,23 @@
-query1: 
-  search: Newyork
+user1:
+  name: Rachit Chaurasia
+  age: '23'
+  gender: male
+  city: Kanpur
+  college: JIIT_62
+  branch: ECE
 
-query2: 
-  search: Delhi
+user2:
+  name: Anuj Mishra
+  age: '22'
+  gender: male
+  city: Lucknow
+  college: JIIT_62
+  branch: ECE
+
+user3:
+  name: Ekansh Singhal
+  age: '22'
+  gender: male
+  city: Dehradun
+  college: JIIT_128
+  branch: CSE
